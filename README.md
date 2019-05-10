@@ -61,6 +61,8 @@ shyApp.handle("#counterApp");
 ```js
 var shyTodoApp = new Shy({
   state: { tasks: [] },
+
+
   render: function(dom) {
     dom.ref("tasksCount").html = this.state.tasks.length;
     dom.ref("btn_insert").click = this.actions.insertTask;
@@ -71,9 +73,9 @@ var shyTodoApp = new Shy({
       itemDom.ref("task.task_mode").checked = item.done;
       itemDom.ref("task.task_mode").change = this.actions.taskToggle.pass(item);
     });
-
-
-  },
+  }
+  
+  ,
   actions: {
     insertTask: function(event, dom, ref) {
       this.setState({
