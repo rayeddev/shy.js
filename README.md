@@ -99,58 +99,49 @@ var shyTodoApp = new Shy({
 ```
 ----
 ## State mutation 
-### Path mutation
+#### Path mutation
 ```js
+    // Path mutation
     this.setState({"form.submit.loading", true})
-```
-## Mongodb Query style state mutation
-### Toggle Value
-```js
+
+    //Mongodb Query style state mutation
+    
+    //Toggle Value
     this.setState({"form.submit.loading", "$toggle" })
 
     // force toggle value
     this.setState({"form.submit.loading", {$toggle : true })
-```
 
-### Inc value
-```js
-    // +1
+    // Inc value ++
     this.setState({"form.errors.total", "$inc" })
 
     // with inc factor 
     this.setState({"form.errors.total", {$inc : -1} })
-```
-### ِExtend
-```js
-    // +1
+
+    //Extend
     this.setState({"form.book", {"$extend" : {Auther : "Ali"} } })
-```
 
-### Push Array Element
-```js
+    //Push Array Element
     this.setState({"form.errors", {$push : {message : "error 1"}} })
-```
 
-### Map Array 
-```js
+    // Map Array 
     this.setState({"form.errors", {$map :  function(error,index) {
         return error
     } }})
-```
 
-# Events Handle 
-## click
-```js
+
+
+    //click event
    dom.ref("btn_insert").click = this.actions.insertTask; 
 ```
 
 # Roadmap 
 
-### - Support all html events.
-### - add more exmaples.
-### - jsDocs.
-### - npm.
-### - HTML Form components special treatment.
-### - Support QuerySelect instead of ref.
-### - HTML Directives (as simple as we can).
-### - Better support for virtual DOM.
+ - Support all html events.
+ - add more exmaples.
+ - jsDocs.
+ - npm.
+ - HTML Form components special treatment.
+ - Support QuerySelect instead of ref.
+ - HTML Directives (as simple as we can).
+ - Better support for virtual DOM.
