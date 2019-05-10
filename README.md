@@ -120,7 +120,11 @@ var shyTodoApp = new Shy({
     // with inc factor 
     this.setState({"form.errors.total", {$inc : -1} })
 ```
-
+### ِExtend
+```js
+    // +1
+    this.setState({"form.book", {"$extend" : {Auther : "Ali"} } })
+```
 
 ### Push Array Element
 ```js
