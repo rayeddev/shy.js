@@ -64,12 +64,15 @@ var shyTodoApp = new Shy({
   render: function(dom) {
     dom.ref("tasksCount").html = this.state.tasks.length;
     dom.ref("btn_insert").click = this.actions.insertTask;
+
     dom.ref("tasks").repeat(this.state.tasks, (itemDom, item) => {
       itemDom.ref("task.title").html = item.title;
       itemDom.ref("task.title").style = item.done ? "text-decoration: line-through;" : "";
       itemDom.ref("task.task_mode").checked = item.done;
       itemDom.ref("task.task_mode").change = this.actions.taskToggle.pass(item);
     });
+
+
   },
   actions: {
     insertTask: function(event, dom, ref) {
@@ -102,7 +105,7 @@ var shyTodoApp = new Shy({
 ```
 ## Mongodb Query style state mutation
 ### Toggle Value
-```
+```js
     this.setState({"form.submit.loading", "$toggle" })
 
     // force toggle value
@@ -110,7 +113,7 @@ var shyTodoApp = new Shy({
 ```
 
 ### Inc value
-```
+```js
     // +1
     this.setState({"form.errors.total", "$inc" })
 
@@ -125,7 +128,7 @@ var shyTodoApp = new Shy({
 ```
 
 ### Map Array 
-```
+```js
     this.setState({"form.errors", {$map :  function(error,index) {
         return error
     } }})
@@ -133,7 +136,7 @@ var shyTodoApp = new Shy({
 
 # Events Handle 
 ## click
-```
+```js
    dom.ref("btn_insert").click = this.actions.insertTask; 
 ```
 
