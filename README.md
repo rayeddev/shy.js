@@ -123,7 +123,7 @@ var shyTodoApp = new Shy({
 
 
 ### Push Array Element
-```
+```js
     this.setState({"form.errors", {$push : {message : "error 1"}} })
 ```
 
