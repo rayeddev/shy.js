@@ -5,13 +5,13 @@ tiny javascript library for tiny apps that lives inside landing pages.
 
 # Easy to use
 ## CDN
-```
+```html
 <script src="https://cdn.jsdelivr.net/gh/rayeddev/shy.js@0.1/dist/shy.js"></script>`
 ```
 
 ## Counter Exmaple ([codepen](https://codepen.io/rayeddev/pen/vwGRZg))
 
-```
+```html
 <div id="counterApp">
     <button ref="incButton">+</button>    
     <span ref="count">0</span>    
@@ -19,7 +19,7 @@ tiny javascript library for tiny apps that lives inside landing pages.
 </div>
 ```
 
-```
+```js
 var shyApp = new Shy("counter", {
   state: {
     count: 9
@@ -40,13 +40,16 @@ shyApp.handle("#counterApp");
 ---
 
 ## Todo list Exmaple ([codepen](https://codepen.io/rayeddev/pen/BeKxBq))
-```
+```html
 <div>
     Todo App (<sapn ref="tasksCount"></sapn>)
 </div>
 <div class="card-body">
     <ul>
-        <li ref="tasks" ><span  ref="task.title">title</span><input type="checkbox"  ref="task.task_mode"></li>
+        <li ref="tasks" >
+            <span  ref="task.title">title</span>
+            <input type="checkbox"  ref="task.task_mode">
+        </li>
     </ul>
 </div>
 <div>
@@ -55,7 +58,7 @@ shyApp.handle("#counterApp");
 </div> 
 ```
 
-```
+```js
 var shyTodoApp = new Shy({
   state: { tasks: [] },
   render: function(dom) {
