@@ -4,9 +4,9 @@ tiny javascript library for tiny apps that lives inside landing pages.
 
 
 # Easy to use
-```
+## CDN
+``
 
-```
 ## Counter Exmaple ([codepen](https://codepen.io/rayeddev/pen/vwGRZg))
 
 ```
