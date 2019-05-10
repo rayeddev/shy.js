@@ -127,7 +127,7 @@ var shyTodoApp = new Shy({
     } }})
 ```
 
-#events Handle 
+# Events Handle 
 ## click
 ```
    dom.ref("btn_insert").click = this.actions.insertTask; 
@@ -135,11 +135,11 @@ var shyTodoApp = new Shy({
 
 # Roadmap 
 
-    - Support all html events.
-    - add more exmaples.
-    - jsDocs.
-    - npm.
-    - HTML Form components special treatment.
-    - Support QuerySelect instead of ref.
-    - HTML Directives (as simple as we can).
-    - Better support for virtual DOM.
+### - Support all html events.
+### - add more exmaples.
+### - jsDocs.
+### - npm.
+### - HTML Form components special treatment.
+### - Support QuerySelect instead of ref.
+### - HTML Directives (as simple as we can).
+### - Better support for virtual DOM.
