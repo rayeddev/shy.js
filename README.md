@@ -100,7 +100,7 @@ var shyTodoApp = new Shy({
 ----
 # State mutation 
 ## Path mutation
-```
+```js
     this.setState({"form.submit.loading", true})
 ```
 ## Mongodb Query style state mutation
