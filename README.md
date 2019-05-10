@@ -8,7 +8,7 @@ tiny javascript library for tiny apps that lives inside landing pages.
 
 ```
 ## Counter Exmaple ([codepen](https://codepen.io/rayeddev/pen/vwGRZg))
-`HTML`
+
 ```
 <div id="counterApp">
     <button ref="incButton">+</button>    
@@ -16,7 +16,7 @@ tiny javascript library for tiny apps that lives inside landing pages.
     <button ref="decButton">-</button>
 </div>
 ```
-`JS`
+
 ```
 var shyApp = new Shy("counter", {
   state: {
@@ -38,7 +38,6 @@ shyApp.handle("#counterApp");
 ---
 
 ## Todo list Exmaple ([codepen](https://codepen.io/rayeddev/pen/BeKxBq))
-`HTML`
 ```
 <div>
     Todo App (<sapn ref="tasksCount"></sapn>)
@@ -53,7 +52,7 @@ shyApp.handle("#counterApp");
     <button type="button" ref="btn_insert" >insert</button>
 </div> 
 ```
-`JS`
+
 ```
 var shyTodoApp = new Shy({
   state: { tasks: [] },
