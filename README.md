@@ -3,13 +3,13 @@ tiny javascript library for tiny apps that lives inside landing pages.
 ## beta not ready for production 
 
 
-# Easy to use
+
 ## CDN
 ```html
 <script src="https://cdn.jsdelivr.net/gh/rayeddev/shy.js@0.1/dist/shy.js"></script>`
 ```
-
-## Counter Exmaple ([codepen](https://codepen.io/rayeddev/pen/vwGRZg))
+## Easy to use
+### Counter Exmaple ([codepen](https://codepen.io/rayeddev/pen/vwGRZg))
 
 ```html
 <div id="counterApp">
@@ -39,7 +39,7 @@ shyApp.handle("#counterApp");
 ```
 ---
 
-## Todo list Exmaple ([codepen](https://codepen.io/rayeddev/pen/BeKxBq))
+### Todo list Exmaple ([codepen](https://codepen.io/rayeddev/pen/BeKxBq))
 ```html
 <div>
     Todo App (<sapn ref="tasksCount"></sapn>)
@@ -98,8 +98,8 @@ var shyTodoApp = new Shy({
 }).handle("#todoapp");
 ```
 ----
-# State mutation 
-## Path mutation
+## State mutation 
+### Path mutation
 ```js
     this.setState({"form.submit.loading", true})
 ```
