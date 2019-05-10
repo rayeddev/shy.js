@@ -5,7 +5,9 @@ tiny javascript library for tiny apps that lives inside landing pages.
 
 # Easy to use
 ## CDN
-`<script src="https://cdn.jsdelivr.net/gh/rayeddev/shy.js@0.1/dist/shy.js"></script>`
+```
+<script src="https://cdn.jsdelivr.net/gh/rayeddev/shy.js@0.1/dist/shy.js"></script>`
+```
 
 ## Counter Exmaple ([codepen](https://codepen.io/rayeddev/pen/vwGRZg))
 
