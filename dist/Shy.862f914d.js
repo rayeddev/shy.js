@@ -1161,8 +1161,6 @@ function () {
       var _this = this;
 
       if (this.listeners[event] === undefined) {
-        console.log(cb_action);
-
         if (typeof cb_action.action === "function") {
           this._dom.addEventListener(event, function (event) {
             _this._context.stateContext = "userAction";
@@ -1195,8 +1193,6 @@ function () {
         cb = _key;
         _key = null;
       }
-
-      console.log(this._dom);
 
       if (this._dom.parentNode !== null) {
         this._dom.parentNode.insertBefore(this._repeat_dom_guide, this._dom);
@@ -1256,8 +1252,6 @@ function () {
     key: "ref",
     value: function ref(_ref) {
       if (this.refs[_ref] === undefined) {
-        console.log("ref is undefiend");
-
         var refDom = this._dom.querySelectorAll("[ref=\"".concat(_ref, "\"]"));
 
         if (refDom.length > 0) {
@@ -1353,7 +1347,6 @@ var IArray =
 function () {
   function IArray(array) {
     (0, _classCallCheck2.default)(this, IArray);
-    console.log("IArray : ", array);
     this.array = array;
   }
 
@@ -1449,14 +1442,11 @@ function () {
       if (this.appDom !== null) {
         this.shyDom = new _ShyDom.default(this.appDom, context);
         var cbDoc = this.instanceObject;
-        console.log("instanceObject", this.instanceObject);
         this._state = cbDoc.state;
-        console.log("state", this._state);
         this.actions = cbDoc.actions;
         Object.keys(this.actions).map(function (actionName, index) {
           _this.actions[actionName] = new _ShyAction.default(_this, _this.actions[actionName], actionName);
         });
-        console.log("actions", this.actions);
         this.renderLogic = cbDoc.render.bind(context); //  this.renderLogic = this.renderLogic.bind(context);
 
         if (cbDoc.mounted != null) {
@@ -1471,7 +1461,6 @@ function () {
   }, {
     key: "validStateCommand",
     value: function validStateCommand(functionKey) {
-      console.log(functionKey, [this.stateCommands[functionKey] || this.refStateCommands[functionKey] || null, this.refStateCommands[functionKey] !== undefined]);
       return [this.stateCommands[functionKey] || this.refStateCommands[functionKey] || null, this.refStateCommands[functionKey] !== undefined];
     }
   }, {
@@ -1553,14 +1542,13 @@ function () {
             switch (_context.prev = _context.next) {
               case 0:
                 if (!(this.stateContext === "renderLogic")) {
-                  _context.next = 3;
+                  _context.next = 2;
                   break;
                 }
 
-                console.error("Not allowed to mutate state inside render logic");
                 return _context.abrupt("return");
 
-              case 3:
+              case 2:
                 // anlyize setState Keys , values,
                 Object.keys(newState).map(function (key, index) {
                   // detect if state value is spical  state command .
@@ -1569,8 +1557,6 @@ function () {
                       setStateFunc = _this2$__translateVal2[0],
                       setStateParams = _this2$__translateVal2[1],
                       isByRef = _this2$__translateVal2[2];
-
-                  console.log("state command for key" + key, [setStateFunc, setStateParams, isByRef]);
 
                   if (key.split(".").length > 1) {
                     // if key is string path
@@ -1587,11 +1573,10 @@ function () {
                     }
                   }
                 });
-                console.log("final state", this._state);
-                _context.next = 7;
+                _context.next = 5;
                 return this.render();
 
-              case 7:
+              case 5:
               case "end":
                 return _context.stop();
             }
@@ -1693,7 +1678,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52563" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50261" + '/');
 
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);
