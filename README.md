@@ -99,13 +99,12 @@ var shyTodoApp = new Shy({
 ```
 ----
 ## State mutation 
-#### Path mutation
 ```js
     // Path mutation
     this.setState({"form.submit.loading", true})
 
     //Mongodb Query style state mutation
-    
+
     //Toggle Value
     this.setState({"form.submit.loading", "$toggle" })
 
@@ -128,8 +127,6 @@ var shyTodoApp = new Shy({
     this.setState({"form.errors", {$map :  function(error,index) {
         return error
     } }})
-
-
 
     //click event
    dom.ref("btn_insert").click = this.actions.insertTask; 
