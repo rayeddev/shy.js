@@ -125,9 +125,14 @@ var shyTodoApp = new Shy({
     //Push Array Element
     this.setState({"form.errors", {$push : {message : "error 1"}} })
 
-    // Map Array 
+    // Array Map  
     this.setState({"form.errors", {$map :  function(error,index) {
         return error
+    } }})
+
+    // Array Filter
+    this.setState({"form.errors", {$filter :  function(error,index) {
+        return error.level == 1
     } }})
 
     //click event
