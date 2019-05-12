@@ -20,7 +20,7 @@ tiny javascript library for tiny apps that lives inside landing pages.
 ```
 
 ```js
-var shyApp = new Shy("counter", {
+var shyApp = new Shy({
   state: {
     count: 9
   },
