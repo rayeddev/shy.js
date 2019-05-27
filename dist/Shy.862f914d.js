@@ -104,7 +104,47 @@ parcelRequire = (function (modules, cache, entry, globalName) {
 
   // Override the current require with this new one
   return newRequire;
-})({"node_modules/@babel/runtime/helpers/classCallCheck.js":[function(require,module,exports) {
+})({"node_modules/@babel/runtime/helpers/defineProperty.js":[function(require,module,exports) {
+function _defineProperty(obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  } else {
+    obj[key] = value;
+  }
+
+  return obj;
+}
+
+module.exports = _defineProperty;
+},{}],"node_modules/@babel/runtime/helpers/objectSpread.js":[function(require,module,exports) {
+var defineProperty = require("./defineProperty");
+
+function _objectSpread(target) {
+  for (var i = 1; i < arguments.length; i++) {
+    var source = arguments[i] != null ? arguments[i] : {};
+    var ownKeys = Object.keys(source);
+
+    if (typeof Object.getOwnPropertySymbols === 'function') {
+      ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {
+        return Object.getOwnPropertyDescriptor(source, sym).enumerable;
+      }));
+    }
+
+    ownKeys.forEach(function (key) {
+      defineProperty(target, key, source[key]);
+    });
+  }
+
+  return target;
+}
+
+module.exports = _objectSpread;
+},{"./defineProperty":"node_modules/@babel/runtime/helpers/defineProperty.js"}],"node_modules/@babel/runtime/helpers/classCallCheck.js":[function(require,module,exports) {
 function _classCallCheck(instance, Constructor) {
   if (!(instance instanceof Constructor)) {
     throw new TypeError("Cannot call a class as a function");
@@ -1004,47 +1044,7 @@ function _typeof(obj) {
 }
 
 module.exports = _typeof;
-},{}],"node_modules/@babel/runtime/helpers/defineProperty.js":[function(require,module,exports) {
-function _defineProperty(obj, key, value) {
-  if (key in obj) {
-    Object.defineProperty(obj, key, {
-      value: value,
-      enumerable: true,
-      configurable: true,
-      writable: true
-    });
-  } else {
-    obj[key] = value;
-  }
-
-  return obj;
-}
-
-module.exports = _defineProperty;
-},{}],"node_modules/@babel/runtime/helpers/objectSpread.js":[function(require,module,exports) {
-var defineProperty = require("./defineProperty");
-
-function _objectSpread(target) {
-  for (var i = 1; i < arguments.length; i++) {
-    var source = arguments[i] != null ? arguments[i] : {};
-    var ownKeys = Object.keys(source);
-
-    if (typeof Object.getOwnPropertySymbols === 'function') {
-      ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {
-        return Object.getOwnPropertyDescriptor(source, sym).enumerable;
-      }));
-    }
-
-    ownKeys.forEach(function (key) {
-      defineProperty(target, key, source[key]);
-    });
-  }
-
-  return target;
-}
-
-module.exports = _objectSpread;
-},{"./defineProperty":"node_modules/@babel/runtime/helpers/defineProperty.js"}],"src/utils.js":[function(require,module,exports) {
+},{}],"src/utils.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -1161,6 +1161,8 @@ function () {
       var _this = this;
 
       if (this.listeners[event] === undefined) {
+        console.log(cb_action);
+
         if (typeof cb_action.action === "function") {
           this._dom.addEventListener(event, function (event) {
             _this._context.stateContext = "userAction";
@@ -1193,6 +1195,8 @@ function () {
         cb = _key;
         _key = null;
       }
+
+      console.log(this._dom);
 
       if (this._dom.parentNode !== null) {
         this._dom.parentNode.insertBefore(this._repeat_dom_guide, this._dom);
@@ -1252,6 +1256,8 @@ function () {
     key: "ref",
     value: function ref(_ref) {
       if (this.refs[_ref] === undefined) {
+        console.log("ref is undefiend");
+
         var refDom = this._dom.querySelectorAll("[ref=\"".concat(_ref, "\"]"));
 
         if (refDom.length > 0) {
@@ -1347,6 +1353,7 @@ var IArray =
 function () {
   function IArray(array) {
     (0, _classCallCheck2.default)(this, IArray);
+    console.log("IArray : ", array);
     this.array = array;
   }
 
@@ -1442,11 +1449,14 @@ function () {
       if (this.appDom !== null) {
         this.shyDom = new _ShyDom.default(this.appDom, context);
         var cbDoc = this.instanceObject;
+        console.log("instanceObject", this.instanceObject);
         this._state = cbDoc.state;
+        console.log("state", this._state);
         this.actions = cbDoc.actions;
         Object.keys(this.actions).map(function (actionName, index) {
           _this.actions[actionName] = new _ShyAction.default(_this, _this.actions[actionName], actionName);
         });
+        console.log("actions", this.actions);
         this.renderLogic = cbDoc.render.bind(context); //  this.renderLogic = this.renderLogic.bind(context);
 
         if (cbDoc.mounted != null) {
@@ -1461,6 +1471,7 @@ function () {
   }, {
     key: "validStateCommand",
     value: function validStateCommand(functionKey) {
+      console.log(functionKey, [this.stateCommands[functionKey] || this.refStateCommands[functionKey] || null, this.refStateCommands[functionKey] !== undefined]);
       return [this.stateCommands[functionKey] || this.refStateCommands[functionKey] || null, this.refStateCommands[functionKey] !== undefined];
     }
   }, {
@@ -1542,13 +1553,14 @@ function () {
             switch (_context.prev = _context.next) {
               case 0:
                 if (!(this.stateContext === "renderLogic")) {
-                  _context.next = 2;
+                  _context.next = 3;
                   break;
                 }
 
+                console.error("Not allowed to mutate state inside render logic");
                 return _context.abrupt("return");
 
-              case 2:
+              case 3:
                 // anlyize setState Keys , values,
                 Object.keys(newState).map(function (key, index) {
                   // detect if state value is spical  state command .
@@ -1557,6 +1569,8 @@ function () {
                       setStateFunc = _this2$__translateVal2[0],
                       setStateParams = _this2$__translateVal2[1],
                       isByRef = _this2$__translateVal2[2];
+
+                  console.log("state command for key" + key, [setStateFunc, setStateParams, isByRef]);
 
                   if (key.split(".").length > 1) {
                     // if key is string path
@@ -1573,10 +1587,11 @@ function () {
                     }
                   }
                 });
-                _context.next = 5;
+                console.log("final state", this._state);
+                _context.next = 7;
                 return this.render();
 
-              case 5:
+              case 7:
               case "end":
                 return _context.stop();
             }
@@ -1610,6 +1625,8 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 
+var _objectSpread2 = _interopRequireDefault(require("@babel/runtime/helpers/objectSpread"));
+
 var _classCallCheck2 = _interopRequireDefault(require("@babel/runtime/helpers/classCallCheck"));
 
 var _createClass2 = _interopRequireDefault(require("@babel/runtime/helpers/createClass"));
@@ -1634,15 +1651,20 @@ function () {
       var apps = this.listApps.filter(function (app) {
         return app.id === elementId;
       });
+      console.log("inst", apps);
       if (apps.length > 0) return;
-      var toHandle = new _ShyCompoent.default(this.instanceObject);
+      var toHandle = new _ShyCompoent.default({
+        state: (0, _objectSpread2.default)({}, this.instanceObject.state),
+        render: this.instanceObject.render,
+        actions: (0, _objectSpread2.default)({}, this.instanceObject.actions)
+      });
       toHandle.prepare(elementId);
       this.listApps.push({
         id: elementId,
         component: toHandle,
         appRef: this.appRef || null
       });
-      return toHandle;
+      return this;
     }
   }]);
   return Shyjs;
@@ -1651,7 +1673,7 @@ function () {
 window.Shy = Shyjs;
 var _default = window.Shy;
 exports.default = _default;
-},{"@babel/runtime/helpers/classCallCheck":"node_modules/@babel/runtime/helpers/classCallCheck.js","@babel/runtime/helpers/createClass":"node_modules/@babel/runtime/helpers/createClass.js","./ShyCompoent":"src/ShyCompoent.js"}],"../../../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"@babel/runtime/helpers/objectSpread":"node_modules/@babel/runtime/helpers/objectSpread.js","@babel/runtime/helpers/classCallCheck":"node_modules/@babel/runtime/helpers/classCallCheck.js","@babel/runtime/helpers/createClass":"node_modules/@babel/runtime/helpers/createClass.js","./ShyCompoent":"src/ShyCompoent.js"}],"../../../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -1678,7 +1700,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50261" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "64259" + '/');
 
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);
