@@ -1,5 +1,10 @@
 {
-    "plugins": ["@babel/plugin-transform-runtime" 
-                    , "transform-remove-console"
-            ]    
+    "plugins": [
+        "@babel/plugin-transform-runtime"
+    ],
+    "env": {
+        "production": {
+            "plugins": [ "transform-remove-console" ]
+        }
+    }
 }
