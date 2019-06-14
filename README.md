@@ -141,7 +141,8 @@ var shyTodoApp = new Shy({
 ```
 
 # Roadmap 
-
+ - props support.
+ - explicit props mutation.
  - Support all html events.
  - add more exmaples.
  - jsDocs.
