@@ -43,7 +43,7 @@ new Shy({
 ### Todo list Exmaple ([codepen](https://codepen.io/rayeddev/pen/BeKxBq))
 ```html
 <div>
-    Todo App (<sapn ref="tasksCount"></sapn>)
+    Todo App (<span ref="tasksCount"></span>)
 </div>
 <div class="card-body">
     <ul>
